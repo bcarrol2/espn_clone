@@ -1,3 +1,33 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.loginPage{
+    display: flex;
+    height: -webkit-fill-available;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url('./espn2.png');
+
+    .loginContainer{
+        width: 300px;
+        height: 350px;
+        border: 5px solid purple;
+        margin: 0 auto;
+        border-radius: 5%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        color: royalblue;
+
+        a{
+            position: absolute;
+            top: 15em;
+            color: royalblue;
+        }
+    }
+
+}
+
+
