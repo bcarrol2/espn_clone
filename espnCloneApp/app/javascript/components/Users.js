@@ -9,21 +9,25 @@ class Users extends React.Component {
     password: ''
   }
 
-  handleSubmit = () => {
-    fetch('localhost:3000/login', {
+  handleSubmit = (email, password) => {
+    event.preventDefault()
+    fetch('http://localhost:3000/login', {
       method: 'POST',
       headers: {
-        'Content-type': 'application/json'
+        "Content-type": "application/json"
       },
       body: JSON.stringify({
         email: email,
         password: password
       })
-    })
+    }).then(res => console.log(res))
+
   }
 
-  handleChange = (e, { value }) => {
-    console.log(e)
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
   }
 
   render() {
@@ -32,11 +36,13 @@ class Users extends React.Component {
 
     return (
       <div className='loginPage'>
-        <form className='loginContainer' onSubmit={this.handleSubmit}>
-          <h1>Login</h1>
-          <input type='text' placeholder='Email' onChange={(e) => this.handleChange} value={email.email} />
+        <form className='loginContainer' onSubmit={() => this.handleSubmit(email, password)}>
+          <h1>Please Login</h1>
+          <label htmlFor='email'>Email</label>
+          <input type='text' id='email' name="email" onChange={this.handleChange} value={email} />
           <br />
-          <input type='password' placeholder='Password' onChange={(e) => this.handleChange} value={password.password} />
+          <label htmlFor='password'>Password</label>
+          <input type='password' id='password' name="password" onChange={this.handleChange} value={password} />
           <br />
           <button type='submit'>Login</button>
           <br />
